@@ -1,4 +1,4 @@
-The underlying logic of this machine learning-based quantitative strategy is as follows:
+Strategy:
 
 
 1. Pair the 30 stocks in the Dow Jones Industrial Average and identify the 10 pairs with the highest cointegration (i.e., the smallest p-value) as investment targets.
