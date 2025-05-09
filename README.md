@@ -35,6 +35,7 @@ The average annual return from these three methods is then calculated for compar
 
 
 #### **Cumulative Returns of SVM Strategy for Top 10 Pairs:**
+#### **The Mean Annualized Return of the SVM Model for the Top 10 Pairs is 59.02%.**
 
 ![image](https://github.com/user-attachments/assets/1248e099-5dd7-43eb-bf61-184670116a75)
 
@@ -44,6 +45,7 @@ The average annual return from these three methods is then calculated for compar
 [RF - Code](RF)
 
 #### **Annualized Return of Random Forest Strategy for Top 10 Pairs:**
+#### **The Mean Annualized Return of the Random Forest Model for the Top 10 Pairs is 59.54%.**
 
 ![image](https://github.com/user-attachments/assets/dbc12406-ed98-4acd-952b-9f9775165126)
 
@@ -53,6 +55,7 @@ The average annual return from these three methods is then calculated for compar
 [NN - Code](NN)
 
 #### **Annualized Return of Neural Network Strategy for Top 10 Pairs:**
+#### **The Mean Annualized Return of the Neural Networkt Model for the Top 10 Pairs is 41.77%.**
 
 ![image](https://github.com/user-attachments/assets/ece90a88-798f-4aa9-9fb7-ec8e2dc683ab)
 
