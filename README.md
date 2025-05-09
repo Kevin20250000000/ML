@@ -1,6 +1,6 @@
 ## **Quant Trading - ML Using Support Vector Machine & Random Forest & and Neural Network**
 
-### **Strategy:**
+### **Strategy Overview:**
 
 1. Pair the 30 stocks in the Dow Jones Industrial Average and identify the 10 pairs with the highest cointegration (i.e., the smallest p-value) as investment targets.
 
@@ -14,5 +14,16 @@ The average annual return from these three methods is then calculated for compar
 
 
 ### **Data Source**
+
+
+### **Strategies:**
+
+#### **1. Support Vector Machine (SVM)**
+
+#### **2. Random Forest (RF）**
+
+#### **3. Neural Network (NN)**
+
+
 
 
