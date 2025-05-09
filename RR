@@ -1,0 +1,63 @@
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.metrics import mean_squared_error
+
+rf_strategy_returns = {}
+
+for pair in top_10_pairs:
+    stocks = pair[0]
+    data = train_test_split_dict[stocks]
+
+    train_X = data['train_X']
+    train_y = data['train_y']
+    test_X = data['test_X']
+    test_y = data['test_y']
+    spread = test_y
+
+    # Create and train a random forest model
+    rf_model = RandomForestRegressor(n_estimators=100, random_state=42)
+    rf_model.fit(train_X, train_y)
+
+    # output RMSE
+    train_pred = rf_model.predict(train_X)
+    test_pred = rf_model.predict(test_X)
+    print(f"{stocks}:")
+    print("  Train RMSE:", np.sqrt(mean_squared_error(train_y, train_pred)))
+    print("  Test RMSE :", np.sqrt(mean_squared_error(test_y, test_pred)))
+
+
+    final_value, cum_returns = score_fn(rf_model, test_X, spread, type="non_neural_net")
+
+
+    n_days = len(cum_returns)
+    annualized_return = (final_value ** (252 / n_days)) - 1
+    annualized_return_percent = annualized_return * 100
+
+    rf_strategy_returns[stocks] = annualized_return_percent
+    print(f"  Annualized Return: {annualized_return_percent:.2f}%\n")
+
+# Compute the mean annualized return for all 10 pairs
+mean_annualized_return = np.mean(list(rf_strategy_returns.values()))
+print(f"Mean Annualized Return of the Random Forest Model for the Top 10 Pairs: {mean_annualized_return:.2f}%")
+
+pairs = list(rf_strategy_returns.keys())
+returns = list(rf_strategy_returns.values())
+pair_labels = [f"{p[0]}-{p[1]}" if isinstance(p, (list, tuple)) else str(p) for p in pairs]
+
+
+mean_return = np.mean(returns)
+
+# Visualization - Random Forest
+plt.figure(figsize=(12, 6))
+bars = plt.bar(pair_labels, returns, color='lightgreen', edgecolor='black')
+plt.axhline(mean_return, color='red', linestyle='--', label=f'Mean = {mean_return:.2f}%')
+
+for bar in bars:
+    height = bar.get_height()
+    plt.text(bar.get_x() + bar.get_width()/2, height + 0.5, f'{height:.2f}%', ha='center', va='bottom')
+
+plt.title('Annualized Return of Random Forest Strategy for Top 10 Pairs')
+plt.ylabel('Annualized Return (%)')
+plt.xticks(rotation=45)
+plt.legend()
+plt.tight_layout()
+plt.show()
