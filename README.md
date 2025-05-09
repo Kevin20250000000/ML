@@ -1,4 +1,4 @@
-# **Machine Learning by Support Vector Machine & Random Forest & Neural Network**
+# **Machine Learning Using Support Vector Machines, Random Forests, and Neural Networks**
 
 ## **Strategy:**
 
