@@ -22,10 +22,13 @@ The average annual return from these three methods is then calculated for compar
 ### **Strategies:**
 
 #### **1. Support Vector Machine (SVM)**
+[SVM - Code]()
 
 #### **2. Random Forest (RF）**
+[RF - Code]()
 
 #### **3. Neural Network (NN)**
+[NN - Code]()
 
 
 
