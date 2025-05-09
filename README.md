@@ -1,4 +1,4 @@
-## **ML Using Support Vector Machine & Random Forest & and Neural Network**
+## **Quant Trading - ML Using Support Vector Machine & Random Forest & and Neural Network**
 
 ### **Strategy:**
 
