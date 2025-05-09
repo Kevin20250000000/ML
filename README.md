@@ -14,6 +14,9 @@ The average annual return from these three methods is then calculated for compar
 
 
 ### **Data Source**
+[DJI](https://github.com/Kevin20250000000/Quant-Trading-ML-Using-Support-Vector-Machine-Random-Forest-Neural-Network/blob/main/dji_stocks.csv)
+
+[Top 10 cointegrated pairs](https://github.com/Kevin20250000000/Quant-Trading-ML-Using-Support-Vector-Machine-Random-Forest-Neural-Network/blob/main/top10_cointegrated_pairs.csv)
 
 
 ### **Strategies:**
@@ -24,10 +27,9 @@ The average annual return from these three methods is then calculated for compar
 
 #### **3. Neural Network (NN)**
 
-[Data]
-[DJI](https://github.com/Kevin20250000000/Quant-Trading-ML-Using-Support-Vector-Machine-Random-Forest-Neural-Network/blob/main/dji_stocks.csv)
 
-[Top 10 cointegrated pairs](https://github.com/Kevin20250000000/Quant-Trading-ML-Using-Support-Vector-Machine-Random-Forest-Neural-Network/blob/main/top10_cointegrated_pairs.csv)
+
+
 
 
 
