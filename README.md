@@ -24,6 +24,7 @@ The average annual return from these three methods is then calculated for compar
 
 #### **3. Neural Network (NN)**
 
+[Data](https://chatgpt.com/c/681e2335-4070-8004-b225-a150a3d6cf1a)
 
 
 
