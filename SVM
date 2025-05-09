@@ -1,0 +1,184 @@
+## Feature engineering
+
+features_dict = {}
+
+for pair, _ in top_10_pairs:
+    stock1, stock2 = pair
+
+    # Take the logarithm of the price
+    log_price1 = np.log(dji_df_pivot[stock1])
+    log_price2 = np.log(dji_df_pivot[stock2])
+    spread = log_price1 - log_price2
+
+    # Feature construction
+    asset1_returns = log_price1.diff()
+    asset2_returns = log_price2.diff()
+    spread_ma5 = spread.rolling(5).mean()
+    asset1_volatility = asset1_returns.rolling(20).std()
+    asset2_volatility = asset2_returns.rolling(20).std()
+
+    # Merge into DataFrame
+    X = pd.DataFrame({
+        'Asset1Returns': asset1_returns,
+        'Asset2Returns': asset2_returns,
+        'SpreadMA5': spread_ma5,
+        'Asset1Volatility': asset1_volatility,
+        'Asset2Volatility': asset2_volatility
+    }).fillna(0)
+
+    y = spread.fillna(0)
+
+    features_dict[pair] = (X, y)
+
+    print(f"Features for pair {stock1}-{stock2} created.")
+
+first_pair = top_10_pairs[0][0]
+X_sample, y_sample = features_dict[first_pair]
+
+
+train_test_split_dict = {}  # Store the training and test sets for each pair of stocks
+
+for pair in top_10_pairs:
+    stock_pair = pair[0]
+    X, y = features_dict[stock_pair]
+
+    train_size = int(len(y) * 0.8)
+    train_X = X.iloc[:train_size]
+    test_X = X.iloc[train_size:]
+    train_y = y.iloc[:train_size]
+    test_y = y.iloc[train_size:]
+
+    train_test_split_dict[stock_pair] = {
+        'train_X': train_X,
+        'test_X': test_X,
+        'train_y': train_y,
+        'test_y': test_y
+    }
+
+    print(f"Data split for pair {stock_pair[0]}-{stock_pair[1]} complete.")
+
+# Model training and testing using SVM
+svm_results = {}
+
+for pair in top_10_pairs:
+    stock_pair = pair[0]
+    data = train_test_split_dict[stock_pair]
+
+    train_X = data['train_X']
+    test_X = data['test_X']
+    train_y = data['train_y']
+    test_y = data['test_y']
+
+    svm_model = SVR(kernel='linear')
+    svm_model.fit(train_X, train_y)
+
+    train_pred = svm_model.predict(train_X)
+    test_pred = svm_model.predict(test_X)
+
+    train_rmse = np.sqrt(mean_squared_error(train_y, train_pred))
+    test_rmse = np.sqrt(mean_squared_error(test_y, test_pred))
+
+    svm_results[stock_pair] = {
+        'train_rmse': train_rmse,
+        'test_rmse': test_rmse,
+        'model': svm_model,
+        'test_pred': test_pred
+    }
+
+    print(f"{stock_pair}: Train RMSE = {train_rmse:.4f}, Test RMSE = {test_rmse:.4f}")
+
+def score_fn(model, test_X, spread, type="non_neural_net"):
+    # predict spread
+    if type == "non_neural_net":
+        test_pred = model.predict(test_X)
+    else:
+        test_pred = model(torch.Tensor(test_X.values)).detach().numpy()
+
+    zscore = (spread - test_pred.mean()) / test_pred.std()
+
+    entry_threshold = 2.0
+    exit_threshold = 1.0
+
+    stock1_position = pd.Series(data=0, index=zscore.index)
+    stock2_position = pd.Series(data=0, index=zscore.index)
+
+    for i in range(1, len(zscore)):
+      if zscore.iloc[i] < -entry_threshold and stock1_position.iloc[i-1] == 0:
+        stock1_position.iloc[i] = 1
+        stock2_position.iloc[i] = -1
+      elif zscore.iloc[i] > entry_threshold and stock2_position.iloc[i-1] == 0:
+        stock1_position.iloc[i] = -1
+        stock2_position.iloc[i] = 1
+      elif abs(zscore.iloc[i]) < exit_threshold:
+        stock1_position.iloc[i] = 0
+        stock2_position.iloc[i] = 0
+      else:
+        stock1_position.iloc[i] = stock1_position.iloc[i-1]
+        stock2_position.iloc[i] = stock2_position.iloc[i-1]
+
+
+    stock1_returns = (np.exp(test_X['Asset1Returns']) * stock1_position.shift(1)).fillna(0)
+    stock2_returns = (np.exp(test_X['Asset2Returns']) * stock2_position.shift(1)).fillna(0)
+
+    total_returns = stock1_returns + stock2_returns
+    cumulative_returns = (1 + total_returns).cumprod()
+
+    # return cumulative_returns[-1], cumulative_returns
+    return cumulative_returns.iloc[-1], cumulative_returns
+
+svm_strategy_returns = {}
+
+for pair in top_10_pairs:
+    stocks = pair[0]
+    data = train_test_split_dict[stocks]
+
+    test_X = data['test_X']
+    test_y = data['test_y']
+    spread = test_y
+    model = svm_results[stocks]['model']
+
+    # Get the cumulative returns
+    final_value, cum_returns = score_fn(model, test_X, spread, type="non_neural_net")
+
+    n_days = len(cum_returns)
+
+    # Calculate annualized return
+    annualized_return = (final_value ** (252 / n_days)) - 1
+
+
+    annualized_return_percent = annualized_return * 100
+
+    svm_strategy_returns[stocks] = annualized_return_percent
+
+    print(f"{stocks}: Annualized Return = {annualized_return_percent:.2f}%")
+
+# Compute the mean annualized return for all 10 pairs
+mean_annualized_return = np.mean(list(svm_strategy_returns.values()))
+print(f"Mean Annualized Return of the SVM Model for the Top 10 Pairs: {mean_annualized_return:.2f}%")
+
+# Visualization - SVM
+
+pair_labels = [f"{p[0]}-{p[1]}" for p, _ in top_10_pairs]
+returns = list(svm_strategy_returns.values())
+
+
+x = np.arange(len(pair_labels))   
+
+plt.figure(figsize=(12, 6))
+bars = plt.bar(x, returns, color='skyblue', edgecolor='black')
+plt.axhline(mean_annualized_return, color='red', linestyle='--', label=f'Mean = {mean_annualized_return:.2f}%')
+
+ 
+for i, bar in enumerate(bars):
+    height = bar.get_height()
+    plt.text(bar.get_x() + bar.get_width() / 2, height + 0.5, f'{height:.2f}%', ha='center', va='bottom')
+
+
+plt.xticks(ticks=x - 0.2, labels=pair_labels, rotation=45, ha='right')   
+plt.title('Annualized Return of SVM Strategy for Top 10 Pairs')
+plt.ylabel('Annualized Return (%)')
+plt.legend()
+plt.tight_layout()
+plt.show()
+
+
