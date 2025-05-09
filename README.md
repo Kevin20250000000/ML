@@ -25,21 +25,21 @@ The average annual return from these three methods is then calculated for compar
 [SVM - Code](SVM)
 
 
-#### **Top 10 Most Significant Cointegrated Stock Pair Spreads:**
+#### **1. Top 10 Most Significant Cointegrated Stock Pair Spreads:**
 
 
 ![image](https://github.com/user-attachments/assets/ff6664c2-3dd4-4151-aaf0-b1b9d7534b52)
 
 
 
-#### **The Mean Annualized Return of the SVM Model for the Top 10 Pairs is 59.02%.**
+#### **2. The Mean Annualized Return of the SVM Model for the Top 10 Pairs is 59.02%.**
 
 
 ![image](https://github.com/user-attachments/assets/fd19b143-856f-4750-9e88-ef0673510f51)
 
 
 
-#### **Cumulative Returns of SVM Strategy for Top 10 Pairs:**
+#### **3. Cumulative Returns of SVM Strategy for Top 10 Pairs:**
 
 
 ![image](https://github.com/user-attachments/assets/1248e099-5dd7-43eb-bf61-184670116a75)
