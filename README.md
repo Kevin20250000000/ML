@@ -24,12 +24,12 @@ The average annual return from these three methods is then calculated for compar
 ### **I. Support Vector Machine (SVM)**
 [SVM - Code](SVM)
 
-#### **The Mean Annualized Return of the SVM Model for the Top 10 Pairs is 59.02%.**
+
 #### **Top 10 Most Significant Cointegrated Stock Pair Spreads:**
 
 ![image](https://github.com/user-attachments/assets/ff6664c2-3dd4-4151-aaf0-b1b9d7534b52)
 
-#### **Annualized Return of SVM Strategy for Top 10 Pairs:**
+#### **The Mean Annualized Return of the SVM Model for the Top 10 Pairs is 59.02%.**
 
 ![image](https://github.com/user-attachments/assets/fd19b143-856f-4750-9e88-ef0673510f51)
 
@@ -44,7 +44,6 @@ The average annual return from these three methods is then calculated for compar
 [RF - Code](RF)
 
 #### **The Mean Annualized Return of the Random Forest Model for the Top 10 Pairs is 59.54%.**
-#### **Annualized Return of Random Forest Strategy for Top 10 Pairs:**
 
 ![image](https://github.com/user-attachments/assets/dbc12406-ed98-4acd-952b-9f9775165126)
 
@@ -54,7 +53,6 @@ The average annual return from these three methods is then calculated for compar
 [NN - Code](NN)
 
 #### **The Mean Annualized Return of the Neural Networkt Model for the Top 10 Pairs is 41.77%.**
-#### **Annualized Return of Neural Network Strategy for Top 10 Pairs:**
 
 ![image](https://github.com/user-attachments/assets/ece90a88-798f-4aa9-9fb7-ec8e2dc683ab)
 
