@@ -22,11 +22,11 @@ The average annual return from these three methods is then calculated for compar
 ### **Strategies:**
 
 #### **1. Support Vector Machine (SVM)**
-[SVM - Code](https://github.com/Kevin20250000000/Quant-Trading-ML-Using-Support-Vector-Machine-Random-Forest-Neural-Network/new/main](https://github.com/Kevin20250000000/Quant-Trading-ML-Using-Support-Vector-Machine-Random-Forest-Neural-Network/blob/main/SVM)
+[SVM - Code]
 
 
 #### **2. Random Forest (RF）**
-[RF - Code]()
+[RF - Code](https://github.com/Kevin20250000000/Quant-Trading-ML-Using-Support-Vector-Machine-Random-Forest-Neural-Network/blob/main/SVM)
 
 #### **3. Neural Network (NN)**
 [NN - Code]()
