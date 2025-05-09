@@ -34,14 +34,29 @@ The average annual return from these three methods is then calculated for compar
 ![image](https://github.com/user-attachments/assets/fd19b143-856f-4750-9e88-ef0673510f51)
 
 
+#### **Cumulative Returns of SVM Strategy for Top 10 Pairs:**
+
+![image](https://github.com/user-attachments/assets/1248e099-5dd7-43eb-bf61-184670116a75)
 
 
 
 #### **2. Random Forest (RF）**
 [RF - Code](RF)
 
+#### **Annualized Return of Random Forest Strategy for Top 10 Pairs:**
+
+![image](https://github.com/user-attachments/assets/dbc12406-ed98-4acd-952b-9f9775165126)
+
+
+
 #### **3. Neural Network (NN)**
 [NN - Code](NN)
+
+#### **Annualized Return of Neural Network Strategy for Top 10 Pairs:**
+
+![image](https://github.com/user-attachments/assets/ece90a88-798f-4aa9-9fb7-ec8e2dc683ab)
+
+
 
 
 
