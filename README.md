@@ -24,8 +24,9 @@ The average annual return from these three methods is then calculated for compar
 
 #### **3. Neural Network (NN)**
 
-[Data](https://chatgpt.com/c/681e2335-4070-8004-b225-a150a3d6cf1a)
+[Data]
 [DJI](https://github.com/Kevin20250000000/Quant-Trading-ML-Using-Support-Vector-Machine-Random-Forest-Neural-Network/blob/main/top10_cointegrated_pairs.csv)
+
 [Top 10](https://github.com/Kevin20250000000/Quant-Trading-ML-Using-Support-Vector-Machine-Random-Forest-Neural-Network/blob/main/top10_cointegrated_pairs.csv)
 
 
