@@ -31,7 +31,7 @@ The average annual return from these three methods is then calculated for compar
 ![image](https://github.com/user-attachments/assets/ff6664c2-3dd4-4151-aaf0-b1b9d7534b52)
 
 
-#### **2.Top 10 Strongest Cointegrated Pairs Heatmap**
+#### **2.The Heatmap of Top 10 Strongest Cointegrated Pairs**
 ![image](https://github.com/user-attachments/assets/ba776324-9c3c-4d31-87cb-945642ffccb0)
 
 
