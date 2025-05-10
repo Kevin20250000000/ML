@@ -31,15 +31,19 @@ The average annual return from these three methods is then calculated for compar
 ![image](https://github.com/user-attachments/assets/ff6664c2-3dd4-4151-aaf0-b1b9d7534b52)
 
 
+#### **2.Top 10 Strongest Cointegrated Pairs Heatmap**
+![image](https://github.com/user-attachments/assets/ba776324-9c3c-4d31-87cb-945642ffccb0)
 
-#### **2. The Mean Annualized Return of the SVM Model for the Top 10 Pairs is 59.02%.**
+
+
+#### **3. The Mean Annualized Return of the SVM Model for the Top 10 Pairs is 59.02%.**
 
 
 ![image](https://github.com/user-attachments/assets/fd19b143-856f-4750-9e88-ef0673510f51)
 
 
 
-#### **3. Cumulative Returns of SVM Strategy for Top 10 Pairs:**
+#### **4. Cumulative Returns of SVM Strategy for Top 10 Pairs:**
 
 
 ![image](https://github.com/user-attachments/assets/1248e099-5dd7-43eb-bf61-184670116a75)
